@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b41qgc3o3inkl"]
+
+[ext_resource type="Texture2D" uid="uid://3vxgdo0mtp20" path="res://game/alien/sprite.png" id="1_m784a"]
+[ext_resource type="Script" path="res://game/alien/script.gd" id="1_te385"]
+[ext_resource type="Script" path="res://game/alien/reload_timer.gd" id="3_4x463"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6c0kw"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qigwt"]
+atlas = ExtResource("1_m784a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5k2f"]
+atlas = ExtResource("1_m784a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p72tn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qigwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5k2f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="alien" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_te385")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6c0kw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p72tn")
+autoplay = "default"
+frame = 1
+frame_progress = 0.737104
+
+[node name="reload_timer" type="Timer" parent="."]
+wait_time = 1.101
+script = ExtResource("3_4x463")
+
+[connection signal="timeout" from="reload_timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="reload_timer" to="reload_timer" method="_on_timeout"]

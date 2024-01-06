@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccwhxoifug0r5"]
+
+[ext_resource type="Texture2D" uid="uid://bjqynnkewcdc3" path="res://game/interface/heart.png" id="1_glays"]
+
+[node name="scene" type="Node2D"]
+
+[node name="ItemList" type="ItemList" parent="."]
+clip_contents = false
+
+[node name="TextureRect" type="TextureRect" parent="ItemList"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_glays")
+
+[node name="TextureRect2" type="TextureRect" parent="ItemList"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_glays")
