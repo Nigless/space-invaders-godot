@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbgprcoqncus0"]
+
+[ext_resource type="Script" path="res://game/ship/weapons/blaster/bullet/script.gd" id="1_lr4to"]
+[ext_resource type="Texture2D" uid="uid://cdh0gxd8o8mmn" path="res://game/ship/weapons/blaster/bullet/sprite.png" id="2_eyo5q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xel7l"]
+radius = 2.0
+height = 14.0
+
+[node name="scene" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_lr4to")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_eyo5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xel7l")

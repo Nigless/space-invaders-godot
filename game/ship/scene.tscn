@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxqm187vadfno"]
+
+[ext_resource type="Script" path="res://game/ship/script.gd" id="1_45l0h"]
+[ext_resource type="Texture2D" uid="uid://cb2b3iijd4gxu" path="res://game/ship/sprite.png" id="2_772ii"]
+[ext_resource type="PackedScene" uid="uid://cdkibnuivqolh" path="res://game/ship/weapons/blaster/node.tscn" id="3_qdish"]
+
+[node name="ship" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_45l0h")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_772ii")
+
+[node name="collider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -9, -7, 8, 7, 8)
+
+[node name="reload_timer" parent="." instance=ExtResource("3_qdish")]
+wait_time = 0.216
